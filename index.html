@@ -1,0 +1,4536 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quanto é em Campos?</title>
+
+<style>
+
+/* =========================================================
+   VARIÁVEIS PRINCIPAIS
+========================================================= */
+
+:root {
+
+    --bg: #07110d;
+    --panel: #102019;
+    --border: rgba(255,255,255,0.12);
+
+    --text: #f4f7f5;
+    --muted: #9aa9a0;
+
+    --green: #8ee000;
+
+    --field-green: #2d8a3b;
+    --field-green-light: #328f40;
+
+    --yellow: #f4c400;
+    --red: #e51b23;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+
+            circle at 50% 0%,
+
+            #173224 0%,
+
+            var(--bg) 55%
+
+        );
+
+    color: var(--text);
+
+    font-family:
+
+        Arial,
+
+        Helvetica,
+
+        sans-serif;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   APLICAÇÃO
+========================================================= */
+
+.app {
+
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 32px;
+
+    border-bottom:
+
+        1px solid
+
+        var(--border);
+
+    background:
+
+        rgba(
+
+            4,
+
+            10,
+
+            7,
+
+            0.88
+
+        );
+
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+}
+
+
+.logo-ball {
+
+    font-size: 24px;
+
+}
+
+
+.logo-highlight {
+
+    color: var(--green);
+
+}
+
+
+/* =====================================================
+   MENU DE NAVEGAÇÃO
+===================================================== */
+
+nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--text);
+}
+
+nav a.active {
+    color: var(--green);
+}
+
+nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--green);
+}
+
+/* =====================================================
+   OUTROS ESPORTES — EM BREVE
+===================================================== */
+
+nav a.coming-soon {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+nav a.coming-soon small {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 7px;
+    font-weight: 600;
+    text-transform: lowercase;
+    line-height: 1;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================================
+   INTRODUÇÃO
+========================================================= */
+
+.intro {
+
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.intro h1 {
+
+    font-size: 22px;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+}
+
+
+.intro p {
+
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   ÁREA DOS INPUTS
+========================================================= */
+
+.input-section {
+
+    height: 105px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    grid-template-columns:
+
+        1fr
+
+        1fr;
+
+    gap: 18px;
+
+    padding:
+
+        0
+
+        30px
+
+        12px;
+
+}
+
+
+.input-card {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+
+        12px
+
+        18px;
+
+    border-radius: 10px;
+
+}
+
+
+.area-card {
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #f5cc00,
+
+            #dba900
+
+        );
+
+    color: #151209;
+
+}
+
+
+.dimension-card {
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #ed292f,
+
+            #a80e15
+
+        );
+
+    color: white;
+
+}
+
+
+.card-title {
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    margin-bottom: 3px;
+
+}
+
+
+.card-description {
+
+    font-size: 10px;
+
+    opacity: 0.78;
+
+    margin-bottom: 7px;
+
+}
+
+
+.form-row {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+input {
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding:
+
+        0
+
+        9px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    outline: none;
+
+}
+
+
+.area-card input {
+
+    width: 28%;
+
+}
+
+
+select {
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding:
+
+        0
+
+        10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+.area-card select {
+
+    width: 54%;
+
+}
+
+
+button {
+
+    height: 32px;
+
+    padding:
+
+        0
+
+        14px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+}
+
+
+.area-card button {
+
+    background: #111;
+
+    color: white;
+
+}
+
+
+.dimension-card button {
+
+    background: #760a10;
+
+    color: white;
+
+}
+
+
+.dimension-input {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.dimension-input input {
+
+    width: 100%;
+
+}
+
+
+.multiply {
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   ÁREA DOS RESULTADOS
+========================================================= */
+
+.result-section {
+
+    flex: 1;
+
+    min-height: 0;
+
+    display: grid;
+
+    grid-template-columns:
+
+        minmax(0, 4fr)
+
+        minmax(250px, 1fr);
+
+    gap: 14px;
+
+    padding:
+
+        0
+
+        30px
+
+        12px;
+
+}
+
+
+/* =========================================================
+   PAINEL VISUAL
+========================================================= */
+
+.visual-panel {
+
+    min-width: 0;
+
+    min-height: 0;
+
+    position: relative;
+
+    background:
+
+        rgba(
+
+            8,
+
+            22,
+
+            14,
+
+            0.85
+
+        );
+
+    border:
+
+        1px solid
+
+        var(--border);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   ÁREA DE NAVEGAÇÃO DA VISUALIZAÇÃO
+
+   IMPORTANTE:
+
+   Não utilizamos display:flex aqui.
+
+   Isso evita que o conteúdo ampliado pelo zoom
+   seja deslocado para cima e fique inacessível.
+
+========================================================= */
+
+.visualization {
+
+    width: 100%;
+
+    height: 100%;
+
+    position: relative;
+
+    overflow: auto;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================================
+   WRAPPER DA VISUALIZAÇÃO
+
+   O tamanho real aumenta conforme o zoom.
+
+========================================================= */
+
+#visual-container {
+
+    position: relative;
+
+    width: 1200px;
+
+    height: 500px;
+
+    margin:
+
+        0
+
+        auto;
+
+}
+
+
+/* =========================================================
+   SVG
+========================================================= */
+
+#visual-container svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   CONTROLES DE ZOOM
+========================================================= */
+
+.zoom-controls {
+
+    position: absolute;
+
+    top: 14px;
+
+    left: 14px;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    padding: 4px;
+
+    background:
+
+        rgba(
+
+            4,
+
+            10,
+
+            7,
+
+            0.9
+
+        );
+
+    border:
+
+        1px solid
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            0.15
+
+        );
+
+    border-radius: 7px;
+
+}
+
+
+.zoom-controls button {
+
+    width: 30px;
+
+    height: 28px;
+
+    padding: 0;
+
+    color: white;
+
+    background:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            0.08
+
+        );
+
+    font-size: 16px;
+
+}
+
+
+#zoom-level {
+
+    min-width: 48px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   DICA DE ARRASTE
+========================================================= */
+
+.drag-hint {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 14px;
+
+    transform:
+
+        translateX(-50%);
+
+    z-index: 40;
+
+    padding:
+
+        6px
+
+        10px;
+
+    color:
+
+        rgba(
+
+            255,
+
+            255,
+
+            255,
+
+            0.85
+
+        );
+
+    background:
+
+        rgba(
+
+            0,
+
+            0,
+
+            0,
+
+            0.55
+
+        );
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    pointer-events: none;
+
+    transition:
+
+        opacity
+
+        0.5s;
+
+}
+
+
+.drag-hint.hidden {
+
+    opacity: 0;
+
+}
+
+
+/* =========================================================
+   ÁREA ARRASTÁVEL
+========================================================= */
+
+.draggable-area {
+
+    cursor: grab;
+
+    touch-action: none;
+
+}
+
+
+.draggable-area:active {
+
+    cursor: grabbing;
+
+}
+
+
+/* =========================================================
+   PAINEL DE INFORMAÇÕES
+========================================================= */
+
+.info-panel {
+
+    min-width: 0;
+
+    overflow: auto;
+
+    padding: 20px;
+
+    background:
+
+        rgba(
+
+            8,
+
+            22,
+
+            14,
+
+            0.85
+
+        );
+
+    border:
+
+        1px solid
+
+        var(--border);
+
+    border-radius: 12px;
+
+}
+
+
+.info-title {
+
+    padding-bottom: 10px;
+
+    margin-bottom: 16px;
+
+    border-bottom:
+
+        2px solid
+
+        var(--green);
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+}
+
+
+.info-block {
+
+    padding-bottom: 13px;
+
+    margin-bottom: 13px;
+
+    border-bottom:
+
+        1px solid
+
+        var(--border);
+
+}
+
+
+.info-label {
+
+    margin-bottom: 4px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+}
+
+
+.info-value {
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+}
+
+
+.info-description {
+
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+}
+
+
+.calculation {
+
+    padding: 12px;
+
+    background:
+
+        rgba(
+
+            142,
+
+            224,
+
+            0,
+
+            0.04
+
+        );
+
+    border:
+
+        1px solid
+
+        rgba(
+
+            142,
+
+            224,
+
+            0,
+
+            0.35
+
+        );
+
+    border-radius: 8px;
+
+}
+
+
+.calculation strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--green);
+
+    font-size: 12px;
+
+}
+
+
+.formula {
+
+    color: var(--muted);
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================================
+   LEGENDA
+========================================================= */
+
+.legend {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 12px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+}
+
+
+.legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.legend-color {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 2px;
+
+}
+
+
+.legend-field {
+
+    background:
+
+        var(--field-green);
+
+}
+
+
+.legend-area {
+
+    background:
+
+        var(--yellow);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    border-top:
+
+        1px solid
+
+        var(--border);
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (
+
+    max-width: 1000px
+
+) {
+
+
+    body {
+
+        overflow: auto;
+
+    }
+
+
+    .app {
+
+        height: auto;
+
+        min-height: 100vh;
+
+    }
+
+
+    .input-section {
+
+        height: auto;
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+    .result-section {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+    .visual-panel {
+
+        min-height: 500px;
+
+    }
+
+
+    nav {
+
+        display: none;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+
+
+<div class="logo">
+
+    <span class="logo-ball">
+        ⚽
+    </span>
+
+    QUANTO É
+
+    <span class="logo-highlight">
+        EM CAMPOS?
+    </span>
+
+</div>
+
+
+<nav>
+
+    <a href="index.html" class="active">
+        Futebol
+    </a>
+
+    <a href="#" class="coming-soon">
+        <span>Outros esportes</span>
+        <small>(em breve)</small>
+    </a>
+
+    <a href="sobre.html">
+        Sobre
+    </a>
+
+</nav>
+
+
+</header>
+
+<main>
+
+<section class="intro">
+
+
+<h1>
+    Quanto é isso em campos?
+</h1>
+
+<p>
+    Compare qualquer área com um campo de futebol.
+</p>
+
+
+</section>
+
+<section class="input-section">
+
+<!-- =====================================================
+     CARTÃO DE ÁREA
+====================================================== -->
+
+<div class="input-card area-card">
+
+
+<div class="card-title">
+    🟨 Área
+</div>
+
+<div class="card-description">
+    Informe uma área conhecida.
+</div>
+
+<div class="form-row">
+
+    <input
+        id="areaValue"
+        type="number"
+        min="0"
+        step="any"
+        placeholder="Ex.: 10000"
+    >
+
+    <select id="areaUnit">
+
+        <option value="m2">
+            m² — Metro quadrado
+        </option>
+
+        <option value="km2">
+            km² — Quilômetro quadrado
+        </option>
+
+        <option value="ha">
+            ha — Hectare
+        </option>
+
+        <option value="are">
+            a — Are
+        </option>
+
+        <option value="acre">
+            acre
+        </option>
+
+        <option value="ft2">
+            ft² — Pé quadrado
+        </option>
+
+        <option value="yd2">
+            yd² — Jarda quadrada
+        </option>
+
+        <option value="in2">
+            in² — Polegada quadrada
+        </option>
+
+        <option value="mi2">
+            mi² — Milha quadrada
+        </option>
+
+    </select>
+
+    <button
+        onclick="calculateByArea()"
+    >
+        Calcular
+    </button>
+
+</div>
+
+
+</div>
+
+<!-- =====================================================
+     CARTÃO DE DIMENSÕES
+====================================================== -->
+
+<div class="input-card dimension-card">
+
+
+<div class="card-title">
+    🟥 Dimensões
+</div>
+
+<div class="card-description">
+    Informe comprimento e largura em metros.
+</div>
+
+<div class="form-row">
+
+    <div class="dimension-input">
+
+        <input
+            id="lengthValue"
+            type="number"
+            min="0"
+            step="any"
+            placeholder="Comprimento"
+        >
+
+        <span>
+            m
+        </span>
+
+    </div>
+
+    <span class="multiply">
+        ×
+    </span>
+
+    <div class="dimension-input">
+
+        <input
+            id="widthValue"
+            type="number"
+            min="0"
+            step="any"
+            placeholder="Largura"
+        >
+
+        <span>
+            m
+        </span>
+
+    </div>
+
+    <button
+        onclick="calculateByDimensions()"
+    >
+        Calcular
+    </button>
+
+</div>
+
+
+</div>
+
+</section>
+
+<section class="result-section">
+
+<!-- =====================================================
+     PAINEL DE VISUALIZAÇÃO
+====================================================== -->
+
+<div class="visual-panel">
+
+<div class="zoom-controls">
+
+
+<button
+    onclick="changeZoom(-0.25)"
+>
+    −
+</button>
+
+<span id="zoom-level">
+    100%
+</span>
+
+<button
+    onclick="changeZoom(0.25)"
+>
+    +
+</button>
+
+<button
+    onclick="resetZoom()"
+>
+    ⟳
+</button>
+
+
+</div>
+
+<div
+    class="visualization"
+    id="visualization"
+>
+
+
+<div
+    id="visual-container"
+></div>
+
+<div
+    class="drag-hint"
+    id="dragHint"
+>
+    Arraste a área amarela sobre o campo para comparar
+</div>
+
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     PAINEL LATERAL
+====================================================== -->
+
+<aside class="info-panel">
+
+
+<div class="info-title">
+    Resultado
+</div>
+
+
+<div class="info-block">
+
+    <div class="info-label">
+        Equivalente
+    </div>
+
+    <div
+        class="info-value"
+        id="equivalent"
+    >
+        0,05 campo
+    </div>
+
+</div>
+
+
+<div class="info-block">
+
+    <div class="info-label">
+        Área informada
+    </div>
+
+    <div
+        class="info-value"
+        id="userArea"
+    >
+        360 m²
+    </div>
+
+    <div
+        class="info-description"
+        id="userDimensions"
+    >
+        Formato visual aproximado.
+    </div>
+
+</div>
+
+
+<div class="info-block">
+
+    <div class="info-label">
+        Percentual de um campo
+    </div>
+
+    <div
+        class="info-value"
+        id="percentage"
+    >
+        5,04%
+    </div>
+
+</div>
+
+
+<div class="info-block">
+
+    <div class="info-label">
+        Campo de referência
+    </div>
+
+    <div class="info-value">
+        105 × 68 m
+    </div>
+
+    <div class="info-description">
+        Área de referência:
+        7.140 m².
+    </div>
+
+</div>
+
+
+<div class="calculation">
+
+    <strong>
+        Como calculamos
+    </strong>
+
+    <div
+        class="formula"
+        id="formula"
+    ></div>
+
+</div>
+
+
+<div class="legend">
+
+    <div class="legend-item">
+
+        <span
+            class="legend-color legend-field"
+        ></span>
+
+        Campo
+
+    </div>
+
+
+    <div class="legend-item">
+
+        <span
+            class="legend-color legend-area"
+        ></span>
+
+        Área informada
+
+    </div>
+
+</div>
+
+
+</aside>
+
+</section>
+
+</main>
+
+<footer>
+
+
+Campo de referência:
+105 × 68 m
+— 7.140 m²
+
+
+</footer>
+
+</div>
+
+<script>
+
+/* =========================================================
+   CONFIGURAÇÃO DO CAMPO DE FUTEBOL
+========================================================= */
+
+const FOOTBALL = {
+
+    LENGTH: 105,
+
+    WIDTH: 68,
+
+    AREA: 105 * 68
+
+};
+
+
+/* =========================================================
+   CONVERSÃO DAS UNIDADES DE ÁREA PARA M²
+========================================================= */
+
+const AREA_CONVERSIONS = {
+
+    m2: 1,
+
+    km2: 1000000,
+
+    ha: 10000,
+
+    are: 100,
+
+    acre: 4046.8564224,
+
+    ft2: 0.09290304,
+
+    yd2: 0.83612736,
+
+    in2: 0.00064516,
+
+    mi2: 2589988.110336
+
+};
+
+
+/* =========================================================
+   DADOS ATUAIS
+========================================================= */
+
+let currentData = {
+
+    area: 360,
+
+    length: null,
+
+    width: null,
+
+    mode: "area"
+
+};
+
+
+/* =========================================================
+   CONFIGURAÇÃO DO ZOOM
+========================================================= */
+
+let zoomLevel = 1;
+
+const MIN_ZOOM = 0.75;
+
+const MAX_ZOOM = 3;
+
+
+/* =========================================================
+   POSIÇÃO DA ÁREA AMARELA
+========================================================= */
+
+let areaPositionX = 0.5;
+
+let areaPositionY = 0.5;
+
+
+/* =========================================================
+   ESTADO DO ARRASTE
+========================================================= */
+
+let dragState = {
+
+    active: false,
+
+    startX: 0,
+
+    startY: 0,
+
+    startPositionX: 0,
+
+    startPositionY: 0
+
+};
+
+
+/* =========================================================
+   FORMATAÇÃO DE NÚMEROS
+========================================================= */
+
+function formatNumber(
+
+    value,
+
+    decimals = 2
+
+) {
+
+    return new Intl.NumberFormat(
+
+        "pt-BR",
+
+        {
+
+            minimumFractionDigits:
+
+                decimals,
+
+            maximumFractionDigits:
+
+                decimals
+
+        }
+
+    ).format(value);
+
+}
+
+
+/* =========================================================
+   CÁLCULO POR ÁREA
+========================================================= */
+
+function calculateByArea() {
+
+
+    const value =
+
+        parseFloat(
+
+            document
+
+                .getElementById(
+
+                    "areaValue"
+
+                )
+
+                .value
+
+        );
+
+
+    const unit =
+
+        document
+
+            .getElementById(
+
+                "areaUnit"
+
+            )
+
+            .value;
+
+
+    if (
+
+        isNaN(value)
+
+        ||
+
+        value <= 0
+
+    ) {
+
+        alert(
+
+            "Informe uma área válida."
+
+        );
+
+        return;
+
+    }
+
+
+    currentData = {
+
+        area:
+
+            value *
+
+            AREA_CONVERSIONS[unit],
+
+        length: null,
+
+        width: null,
+
+        mode: "area"
+
+    };
+
+
+    resetAreaPosition();
+
+    updateApplication();
+
+}
+
+
+/* =========================================================
+   CÁLCULO POR DIMENSÕES
+========================================================= */
+
+function calculateByDimensions() {
+
+
+    const length =
+
+        parseFloat(
+
+            document
+
+                .getElementById(
+
+                    "lengthValue"
+
+                )
+
+                .value
+
+        );
+
+
+    const width =
+
+        parseFloat(
+
+            document
+
+                .getElementById(
+
+                    "widthValue"
+
+                )
+
+                .value
+
+        );
+
+
+    if (
+
+        isNaN(length)
+
+        ||
+
+        isNaN(width)
+
+        ||
+
+        length <= 0
+
+        ||
+
+        width <= 0
+
+    ) {
+
+        alert(
+
+            "Informe dimensões válidas."
+
+        );
+
+        return;
+
+    }
+
+
+    currentData = {
+
+        area:
+
+            length *
+
+            width,
+
+        length,
+
+        width,
+
+        mode: "dimensions"
+
+    };
+
+
+    resetAreaPosition();
+
+    updateApplication();
+
+}
+
+
+/* =========================================================
+   ATUALIZA TODAS AS INFORMAÇÕES
+========================================================= */
+
+function updateApplication() {
+
+
+    const area =
+
+        currentData.area;
+
+
+    const equivalent =
+
+        area /
+
+        FOOTBALL.AREA;
+
+
+    const percentage =
+
+        equivalent *
+
+        100;
+
+
+    document
+
+        .getElementById(
+
+            "equivalent"
+
+        )
+
+        .textContent =
+
+        equivalent < 1
+
+        ?
+
+        `${formatNumber(
+
+            equivalent,
+
+            2
+
+        )} campo`
+
+        :
+
+        `${formatNumber(
+
+            equivalent,
+
+            2
+
+        )} campos`;
+
+
+    document
+
+        .getElementById(
+
+            "userArea"
+
+        )
+
+        .textContent =
+
+        `${formatNumber(
+
+            area,
+
+            2
+
+        )} m²`;
+
+
+    if (
+
+        currentData.mode ===
+
+        "dimensions"
+
+    ) {
+
+        document
+
+            .getElementById(
+
+                "userDimensions"
+
+            )
+
+            .textContent =
+
+            `${formatNumber(
+
+                currentData.length,
+
+                2
+
+            )} × ${formatNumber(
+
+                currentData.width,
+
+                2
+
+            )} m`;
+
+    }
+
+    else {
+
+        document
+
+            .getElementById(
+
+                "userDimensions"
+
+            )
+
+            .textContent =
+
+            "Formato visual aproximado.";
+
+    }
+
+
+    document
+
+        .getElementById(
+
+            "percentage"
+
+        )
+
+        .textContent =
+
+        `${formatNumber(
+
+            percentage,
+
+            2
+
+        )}%`;
+
+
+    document
+
+        .getElementById(
+
+            "formula"
+
+        )
+
+        .innerHTML =
+
+        `${formatNumber(
+
+            area,
+
+            2
+
+        )} m² ÷ ${formatNumber(
+
+            FOOTBALL.AREA,
+
+            2
+
+        )} m²<br><br>
+
+        = ${formatNumber(
+
+            equivalent,
+
+            4
+
+        )} campo(s)`;
+
+
+    renderComparison();
+
+}
+
+
+/* =========================================================
+   DIMENSÕES VISUAIS DA ÁREA
+========================================================= */
+
+function getVisualAreaDimensions() {
+
+
+    if (
+
+        currentData.mode ===
+
+        "dimensions"
+
+    ) {
+
+        return {
+
+            length:
+
+                currentData.length,
+
+            width:
+
+                currentData.width
+
+        };
+
+    }
+
+
+    const aspectRatio =
+
+        FOOTBALL.LENGTH /
+
+        FOOTBALL.WIDTH;
+
+
+    const width =
+
+        Math.sqrt(
+
+            currentData.area /
+
+            aspectRatio
+
+        );
+
+
+    const length =
+
+        width *
+
+        aspectRatio;
+
+
+    return {
+
+        length,
+
+        width
+
+    };
+
+}
+
+
+/* =========================================================
+   CRIAÇÃO DAS LISTRAS DO CAMPO
+========================================================= */
+
+function createGrassStripes(
+
+    x,
+
+    y,
+
+    width,
+
+    height
+
+) {
+
+
+    const stripeWidth =
+
+        width /
+
+        14;
+
+
+    let result = "";
+
+
+    for (
+
+        let i = 0;
+
+        i < 14;
+
+        i++
+
+    ) {
+
+
+        if (
+
+            i % 2 === 0
+
+        ) {
+
+            result +=
+
+                `<rect
+
+                    x="${
+
+                        x +
+
+                        i *
+
+                        stripeWidth
+
+                    }"
+
+                    y="${y}"
+
+                    width="${stripeWidth}"
+
+                    height="${height}"
+
+                    fill="#328f40"
+
+                    opacity="0.25"
+
+                />`;
+
+        }
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   DESENHO DO CAMPO DE FUTEBOL
+========================================================= */
+
+function drawFootballField(
+
+    x,
+
+    y,
+
+    width,
+
+    height,
+
+    opacity = 1
+
+) {
+
+
+    const scale =
+
+        Math.min(
+
+            width /
+
+            FOOTBALL.LENGTH,
+
+            height /
+
+            FOOTBALL.WIDTH
+
+        );
+
+
+    const centerX =
+
+        x +
+
+        width /
+
+        2;
+
+
+    const centerY =
+
+        y +
+
+        height /
+
+        2;
+
+
+    const penaltyDepth =
+
+        16.5 *
+
+        scale;
+
+
+    const penaltyWidth =
+
+        40.32 *
+
+        scale;
+
+
+    const goalAreaDepth =
+
+        5.5 *
+
+        scale;
+
+
+    const goalAreaWidth =
+
+        18.32 *
+
+        scale;
+
+
+    const penaltySpot =
+
+        11 *
+
+        scale;
+
+
+    const centerCircle =
+
+        9.15 *
+
+        scale;
+
+
+    return `
+
+    <g opacity="${opacity}">
+
+        <rect
+
+            x="${x}"
+
+            y="${y}"
+
+            width="${width}"
+
+            height="${height}"
+
+            rx="3"
+
+            fill="#2d8a3b"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.8,
+
+                1.5 *
+
+                scale
+
+            )}"
+
+        />
+
+        ${createGrassStripes(
+
+            x,
+
+            y,
+
+            width,
+
+            height
+
+        )}
+
+        <line
+
+            x1="${centerX}"
+
+            y1="${y}"
+
+            x2="${centerX}"
+
+            y2="${
+
+                y +
+
+                height
+
+            }"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <circle
+
+            cx="${centerX}"
+
+            cy="${centerY}"
+
+            r="${centerCircle}"
+
+            fill="none"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <circle
+
+            cx="${centerX}"
+
+            cy="${centerY}"
+
+            r="${Math.max(
+
+                1.5,
+
+                2 *
+
+                scale
+
+            )}"
+
+            fill="white"
+
+        />
+
+        <rect
+
+            x="${x}"
+
+            y="${
+
+                centerY -
+
+                penaltyWidth /
+
+                2
+
+            }"
+
+            width="${penaltyDepth}"
+
+            height="${penaltyWidth}"
+
+            fill="none"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <rect
+
+            x="${x}"
+
+            y="${
+
+                centerY -
+
+                goalAreaWidth /
+
+                2
+
+            }"
+
+            width="${goalAreaDepth}"
+
+            height="${goalAreaWidth}"
+
+            fill="none"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <rect
+
+            x="${
+
+                x +
+
+                width -
+
+                penaltyDepth
+
+            }"
+
+            y="${
+
+                centerY -
+
+                penaltyWidth /
+
+                2
+
+            }"
+
+            width="${penaltyDepth}"
+
+            height="${penaltyWidth}"
+
+            fill="none"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <rect
+
+            x="${
+
+                x +
+
+                width -
+
+                goalAreaDepth
+
+            }"
+
+            y="${
+
+                centerY -
+
+                goalAreaWidth /
+
+                2
+
+            }"
+
+            width="${goalAreaDepth}"
+
+            height="${goalAreaWidth}"
+
+            fill="none"
+
+            stroke="white"
+
+            stroke-width="${Math.max(
+
+                0.7,
+
+                1.3 *
+
+                scale
+
+            )}"
+
+        />
+
+        <circle
+
+            cx="${
+
+                x +
+
+                penaltySpot
+
+            }"
+
+            cy="${centerY}"
+
+            r="${Math.max(
+
+                1.3,
+
+                2 *
+
+                scale
+
+            )}"
+
+            fill="white"
+
+        />
+
+        <circle
+
+            cx="${
+
+                x +
+
+                width -
+
+                penaltySpot
+
+            }"
+
+            cy="${centerY}"
+
+            r="${Math.max(
+
+                1.3,
+
+                2 *
+
+                scale
+
+            )}"
+
+            fill="white"
+
+        />
+
+    </g>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CALCULA A POSIÇÃO DA ÁREA AMARELA
+========================================================= */
+
+function renderDraggableArea(
+
+    fieldX,
+
+    fieldY,
+
+    fieldWidth,
+
+    fieldHeight
+
+) {
+
+
+    const dimensions =
+
+        getVisualAreaDimensions();
+
+
+    let areaWidth;
+
+    let areaHeight;
+
+
+    if (
+
+        currentData.mode ===
+
+        "dimensions"
+
+    ) {
+
+        areaWidth =
+
+            fieldWidth *
+
+            (
+
+                dimensions.length /
+
+                FOOTBALL.LENGTH
+
+            );
+
+
+        areaHeight =
+
+            fieldHeight *
+
+            (
+
+                dimensions.width /
+
+                FOOTBALL.WIDTH
+
+            );
+
+    }
+
+    else {
+
+        const scale =
+
+            Math.sqrt(
+
+                currentData.area /
+
+                FOOTBALL.AREA
+
+            );
+
+
+        areaWidth =
+
+            fieldWidth *
+
+            scale;
+
+
+        areaHeight =
+
+            fieldHeight *
+
+            scale;
+
+    }
+
+
+    areaWidth =
+
+        Math.min(
+
+            areaWidth,
+
+            fieldWidth
+
+        );
+
+
+    areaHeight =
+
+        Math.min(
+
+            areaHeight,
+
+            fieldHeight
+
+        );
+
+
+    const availableX =
+
+        fieldWidth -
+
+        areaWidth;
+
+
+    const availableY =
+
+        fieldHeight -
+
+        areaHeight;
+
+
+    const areaX =
+
+        fieldX +
+
+        availableX *
+
+        areaPositionX;
+
+
+    const areaY =
+
+        fieldY +
+
+        availableY *
+
+        areaPositionY;
+
+
+    return {
+
+        areaWidth,
+
+        areaHeight,
+
+        areaX,
+
+        areaY,
+
+        fieldX,
+
+        fieldY,
+
+        fieldWidth,
+
+        fieldHeight
+
+    };
+
+}
+
+
+/* =========================================================
+   CAMPO ÚNICO PARA ÁREAS MENORES QUE UM CAMPO
+========================================================= */
+
+function renderSingleField(
+
+    svgWidth,
+
+    svgHeight
+
+) {
+
+
+    const padding =
+
+        40;
+
+
+    const scale =
+
+        Math.min(
+
+            (
+
+                svgWidth -
+
+                padding *
+
+                2
+
+            )
+
+            /
+
+            FOOTBALL.LENGTH,
+
+
+            (
+
+                svgHeight -
+
+                padding *
+
+                2
+
+            )
+
+            /
+
+            FOOTBALL.WIDTH
+
+        );
+
+
+    const fieldWidth =
+
+        FOOTBALL.LENGTH *
+
+        scale;
+
+
+    const fieldHeight =
+
+        FOOTBALL.WIDTH *
+
+        scale;
+
+
+    const fieldX =
+
+        (
+
+            svgWidth -
+
+            fieldWidth
+
+        ) /
+
+        2;
+
+
+    const fieldY =
+
+        (
+
+            svgHeight -
+
+            fieldHeight
+
+        ) /
+
+        2;
+
+
+    const area =
+
+        renderDraggableArea(
+
+            fieldX,
+
+            fieldY,
+
+            fieldWidth,
+
+            fieldHeight
+
+        );
+
+
+    return `
+
+    <svg
+
+        id="comparison-svg"
+
+        viewBox="
+
+            0
+
+            0
+
+            ${svgWidth}
+
+            ${svgHeight}
+
+        "
+
+        preserveAspectRatio="xMidYMid meet"
+
+    >
+
+        ${drawFootballField(
+
+            fieldX,
+
+            fieldY,
+
+            fieldWidth,
+
+            fieldHeight
+
+        )}
+
+
+        <g
+
+            id="draggable-area"
+
+            class="draggable-area"
+
+            data-field-x="${area.fieldX}"
+
+            data-field-y="${area.fieldY}"
+
+            data-field-width="${area.fieldWidth}"
+
+            data-field-height="${area.fieldHeight}"
+
+            data-area-width="${area.areaWidth}"
+
+            data-area-height="${area.areaHeight}"
+
+        >
+
+            <rect
+
+                x="${area.areaX}"
+
+                y="${area.areaY}"
+
+                width="${area.areaWidth}"
+
+                height="${area.areaHeight}"
+
+                fill="#f4c400"
+
+                fill-opacity="0.72"
+
+                stroke="white"
+
+                stroke-width="2"
+
+                stroke-dasharray="7 4"
+
+            />
+
+        </g>
+
+    </svg>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CAMPO PARCIAL
+========================================================= */
+
+function drawPartialFootballField(
+
+    x,
+
+    y,
+
+    width,
+
+    height,
+
+    fraction,
+
+    clipId
+
+) {
+
+
+    const visibleWidth =
+
+        width *
+
+        fraction;
+
+
+    return `
+
+    <defs>
+
+        <clipPath id="${clipId}">
+
+            <rect
+
+                x="${x}"
+
+                y="${y}"
+
+                width="${visibleWidth}"
+
+                height="${height}"
+
+            />
+
+        </clipPath>
+
+    </defs>
+
+
+    <g
+
+        clip-path="url(#${clipId})"
+
+    >
+
+        ${drawFootballField(
+
+            x,
+
+            y,
+
+            width,
+
+            height
+
+        )}
+
+    </g>
+
+    `;
+
+}
+
+
+/* =========================================================
+   CALCULA O MELHOR LAYOUT PARA VÁRIOS CAMPOS
+========================================================= */
+
+function findBestLayout(
+
+    numberOfFields,
+
+    svgWidth,
+
+    svgHeight
+
+) {
+
+
+    let bestLayout =
+
+        null;
+
+
+    const padding =
+
+        45;
+
+
+    const availableWidth =
+
+        svgWidth -
+
+        padding *
+
+        2;
+
+
+    const availableHeight =
+
+        svgHeight -
+
+        padding *
+
+        2;
+
+
+    const gap =
+
+        18;
+
+
+    for (
+
+        let columns = 1;
+
+        columns <= numberOfFields;
+
+        columns++
+
+    ) {
+
+
+        const rows =
+
+            Math.ceil(
+
+                numberOfFields /
+
+                columns
+
+            );
+
+
+        const scale =
+
+            Math.min(
+
+                (
+
+                    availableWidth -
+
+                    (
+
+                        columns -
+
+                        1
+
+                    )
+
+                    *
+
+                    gap
+
+                )
+
+                /
+
+                (
+
+                    columns *
+
+                    FOOTBALL.LENGTH
+
+                ),
+
+
+                (
+
+                    availableHeight -
+
+                    (
+
+                        rows -
+
+                        1
+
+                    )
+
+                    *
+
+                    gap
+
+                )
+
+                /
+
+                (
+
+                    rows *
+
+                    FOOTBALL.WIDTH
+
+                )
+
+            );
+
+
+        const fieldWidth =
+
+            FOOTBALL.LENGTH *
+
+            scale;
+
+
+        const fieldHeight =
+
+            FOOTBALL.WIDTH *
+
+            scale;
+
+
+        const totalWidth =
+
+            columns *
+
+            fieldWidth
+
+            +
+
+            (
+
+                columns -
+
+                1
+
+            )
+
+            *
+
+            gap;
+
+
+        const totalHeight =
+
+            rows *
+
+            fieldHeight
+
+            +
+
+            (
+
+                rows -
+
+                1
+
+            )
+
+            *
+
+            gap;
+
+
+        const utilization =
+
+            (
+
+                totalWidth *
+
+                totalHeight
+
+            )
+
+            /
+
+            (
+
+                availableWidth *
+
+                availableHeight
+
+            );
+
+
+        const candidate = {
+
+            columns,
+
+            rows,
+
+            scale,
+
+            fieldWidth,
+
+            fieldHeight,
+
+            totalWidth,
+
+            totalHeight,
+
+            utilization
+
+        };
+
+
+        if (
+
+            bestLayout === null
+
+            ||
+
+            candidate.utilization >
+
+            bestLayout.utilization
+
+        ) {
+
+            bestLayout =
+
+                candidate;
+
+        }
+
+    }
+
+
+    return bestLayout;
+
+}
+
+
+/* =========================================================
+   VÁRIOS CAMPOS
+========================================================= */
+
+function renderMultipleFields(
+
+    svgWidth,
+
+    svgHeight
+
+) {
+
+
+    const equivalent =
+
+        currentData.area /
+
+        FOOTBALL.AREA;
+
+
+    const completeFields =
+
+        Math.floor(
+
+            equivalent
+
+        );
+
+
+    const fraction =
+
+        equivalent -
+
+        completeFields;
+
+
+    const visualFields =
+
+        completeFields +
+
+        (
+
+            fraction >
+
+            0.001
+
+            ?
+
+            1
+
+            :
+
+            0
+
+        );
+
+
+    const layout =
+
+        findBestLayout(
+
+            visualFields,
+
+            svgWidth,
+
+            svgHeight
+
+        );
+
+
+    const gap =
+
+        18;
+
+
+    const totalWidth =
+
+        layout.columns *
+
+        layout.fieldWidth
+
+        +
+
+        (
+
+            layout.columns -
+
+            1
+
+        )
+
+        *
+
+        gap;
+
+
+    const totalHeight =
+
+        layout.rows *
+
+        layout.fieldHeight
+
+        +
+
+        (
+
+            layout.rows -
+
+            1
+
+        )
+
+        *
+
+        gap;
+
+
+    const startX =
+
+        (
+
+            svgWidth -
+
+            totalWidth
+
+        ) /
+
+        2;
+
+
+    const startY =
+
+        (
+
+            svgHeight -
+
+            totalHeight
+
+        ) /
+
+        2;
+
+
+    let fields = "";
+
+
+    for (
+
+        let i = 0;
+
+        i < completeFields;
+
+        i++
+
+    ) {
+
+
+        const column =
+
+            i %
+
+            layout.columns;
+
+
+        const row =
+
+            Math.floor(
+
+                i /
+
+                layout.columns
+
+            );
+
+
+        const x =
+
+            startX +
+
+            column *
+
+            (
+
+                layout.fieldWidth +
+
+                gap
+
+            );
+
+
+        const y =
+
+            startY +
+
+            row *
+
+            (
+
+                layout.fieldHeight +
+
+                gap
+
+            );
+
+
+        fields +=
+
+            drawFootballField(
+
+                x,
+
+                y,
+
+                layout.fieldWidth,
+
+                layout.fieldHeight
+
+            );
+
+
+        if (
+
+            column <
+
+            layout.columns -
+
+            1
+
+        ) {
+
+
+            const separatorX =
+
+                x +
+
+                layout.fieldWidth +
+
+                gap /
+
+                2;
+
+
+            fields +=
+
+                `<line
+
+                    x1="${separatorX}"
+
+                    y1="${
+
+                        y -
+
+                        8
+
+                    }"
+
+                    x2="${separatorX}"
+
+                    y2="${
+
+                        y +
+
+                        layout.fieldHeight +
+
+                        8
+
+                    }"
+
+                    stroke="rgba(255,255,255,0.35)"
+
+                    stroke-width="2"
+
+                    stroke-dasharray="5 5"
+
+                />`;
+
+        }
+
+    }
+
+
+    if (
+
+        fraction >
+
+        0.001
+
+    ) {
+
+
+        const index =
+
+            completeFields;
+
+
+        const column =
+
+            index %
+
+            layout.columns;
+
+
+        const row =
+
+            Math.floor(
+
+                index /
+
+                layout.columns
+
+            );
+
+
+        const x =
+
+            startX +
+
+            column *
+
+            (
+
+                layout.fieldWidth +
+
+                gap
+
+            );
+
+
+        const y =
+
+            startY +
+
+            row *
+
+            (
+
+                layout.fieldHeight +
+
+                gap
+
+            );
+
+
+        fields +=
+
+            drawPartialFootballField(
+
+                x,
+
+                y,
+
+                layout.fieldWidth,
+
+                layout.fieldHeight,
+
+                fraction,
+
+                `partial-${
+
+                    Date.now()
+
+                }`
+
+            );
+
+
+        if (
+
+            column > 0
+
+        ) {
+
+
+            const separatorX =
+
+                x -
+
+                gap /
+
+                2;
+
+
+            fields +=
+
+                `<line
+
+                    x1="${separatorX}"
+
+                    y1="${
+
+                        y -
+
+                        8
+
+                    }"
+
+                    x2="${separatorX}"
+
+                    y2="${
+
+                        y +
+
+                        layout.fieldHeight +
+
+                        8
+
+                    }"
+
+                    stroke="rgba(255,255,255,0.35)"
+
+                    stroke-width="2"
+
+                    stroke-dasharray="5 5"
+
+                />`;
+
+        }
+
+    }
+
+
+    return `
+
+    <svg
+
+        viewBox="
+
+            0
+
+            0
+
+            ${svgWidth}
+
+            ${svgHeight}
+
+        "
+
+        preserveAspectRatio="xMidYMid meet"
+
+    >
+
+        ${fields}
+
+    </svg>
+
+    `;
+
+}
+
+
+/* =========================================================
+   RENDERIZAÇÃO PRINCIPAL
+
+   ALTERAÇÃO IMPORTANTE:
+
+   O tamanho do container aumenta com o zoom.
+
+   Porém a visualização usa overflow:auto,
+   permitindo navegar por todo o conteúdo.
+
+========================================================= */
+
+function renderComparison() {
+
+
+    const container =
+
+        document
+
+            .getElementById(
+
+                "visual-container"
+
+            );
+
+
+    const baseWidth =
+
+        1200;
+
+
+    const baseHeight =
+
+        500;
+
+
+    container.style.width =
+
+        `${
+
+            baseWidth *
+
+            zoomLevel
+
+        }px`;
+
+
+    container.style.height =
+
+        `${
+
+            baseHeight *
+
+            zoomLevel
+
+        }px`;
+
+
+    const equivalent =
+
+        currentData.area /
+
+        FOOTBALL.AREA;
+
+
+    if (
+
+        equivalent < 1
+
+    ) {
+
+
+        container.innerHTML =
+
+            renderSingleField(
+
+                baseWidth,
+
+                baseHeight
+
+            );
+
+
+        enableDragging();
+
+    }
+
+    else {
+
+
+        container.innerHTML =
+
+            renderMultipleFields(
+
+                baseWidth,
+
+                baseHeight
+
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   ARRASTE DA ÁREA AMARELA
+========================================================= */
+
+function enableDragging() {
+
+
+    const area =
+
+        document
+
+            .getElementById(
+
+                "draggable-area"
+
+            );
+
+
+    const svg =
+
+        document
+
+            .getElementById(
+
+                "comparison-svg"
+
+            );
+
+
+    if (
+
+        !area
+
+        ||
+
+        !svg
+
+    ) {
+
+        return;
+
+    }
+
+
+    area.addEventListener(
+
+        "pointerdown",
+
+        function(event) {
+
+
+            event.preventDefault();
+
+
+            area.setPointerCapture(
+
+                event.pointerId
+
+            );
+
+
+            dragState.active =
+
+                true;
+
+
+            dragState.startX =
+
+                event.clientX;
+
+
+            dragState.startY =
+
+                event.clientY;
+
+
+            dragState.startPositionX =
+
+                areaPositionX;
+
+
+            dragState.startPositionY =
+
+                areaPositionY;
+
+
+            document
+
+                .getElementById(
+
+                    "dragHint"
+
+                )
+
+                .classList
+
+                .add(
+
+                    "hidden"
+
+                );
+
+        }
+
+    );
+
+
+    area.addEventListener(
+
+        "pointermove",
+
+        function(event) {
+
+
+            if (
+
+                !dragState.active
+
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            const rect =
+
+                svg.getBoundingClientRect();
+
+
+            const svgWidth =
+
+                1200;
+
+
+            const svgHeight =
+
+                500;
+
+
+            const deltaSvgX =
+
+                (
+
+                    event.clientX -
+
+                    dragState.startX
+
+                )
+
+                *
+
+                (
+
+                    svgWidth /
+
+                    rect.width
+
+                );
+
+
+            const deltaSvgY =
+
+                (
+
+                    event.clientY -
+
+                    dragState.startY
+
+                )
+
+                *
+
+                (
+
+                    svgHeight /
+
+                    rect.height
+
+                );
+
+
+            const fieldWidth =
+
+                parseFloat(
+
+                    area.dataset.fieldWidth
+
+                );
+
+
+            const fieldHeight =
+
+                parseFloat(
+
+                    area.dataset.fieldHeight
+
+                );
+
+
+            const areaWidth =
+
+                parseFloat(
+
+                    area.dataset.areaWidth
+
+                );
+
+
+            const areaHeight =
+
+                parseFloat(
+
+                    area.dataset.areaHeight
+
+                );
+
+
+            const availableX =
+
+                fieldWidth -
+
+                areaWidth;
+
+
+            const availableY =
+
+                fieldHeight -
+
+                areaHeight;
+
+
+            if (
+
+                availableX > 0
+
+            ) {
+
+                areaPositionX =
+
+                    dragState.startPositionX
+
+                    +
+
+                    (
+
+                        deltaSvgX /
+
+                        availableX
+
+                    );
+
+            }
+
+
+            if (
+
+                availableY > 0
+
+            ) {
+
+                areaPositionY =
+
+                    dragState.startPositionY
+
+                    +
+
+                    (
+
+                        deltaSvgY /
+
+                        availableY
+
+                    );
+
+            }
+
+
+            areaPositionX =
+
+                Math.max(
+
+                    0,
+
+                    Math.min(
+
+                        1,
+
+                        areaPositionX
+
+                    )
+
+                );
+
+
+            areaPositionY =
+
+                Math.max(
+
+                    0,
+
+                    Math.min(
+
+                        1,
+
+                        areaPositionY
+
+                    )
+
+                );
+
+
+            renderComparison();
+
+        }
+
+    );
+
+
+    area.addEventListener(
+
+        "pointerup",
+
+        function(event) {
+
+
+            dragState.active =
+
+                false;
+
+
+            try {
+
+                area.releasePointerCapture(
+
+                    event.pointerId
+
+                );
+
+            }
+
+            catch (
+
+                error
+
+            ) {
+
+            }
+
+        }
+
+    );
+
+
+    area.addEventListener(
+
+        "pointercancel",
+
+        function() {
+
+            dragState.active =
+
+                false;
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
+   RESETAR POSIÇÃO DA ÁREA
+========================================================= */
+
+function resetAreaPosition() {
+
+
+    areaPositionX =
+
+        0.5;
+
+
+    areaPositionY =
+
+        0.5;
+
+
+    dragState.active =
+
+        false;
+
+
+    const hint =
+
+        document
+
+            .getElementById(
+
+                "dragHint"
+
+            );
+
+
+    if (hint) {
+
+        hint
+
+            .classList
+
+            .remove(
+
+                "hidden"
+
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   ALTERAR ZOOM
+========================================================= */
+
+function changeZoom(
+
+    amount
+
+) {
+
+
+    zoomLevel +=
+
+        amount;
+
+
+    zoomLevel =
+
+        Math.max(
+
+            MIN_ZOOM,
+
+            Math.min(
+
+                MAX_ZOOM,
+
+                zoomLevel
+
+            )
+
+        );
+
+
+    updateZoomLabel();
+
+
+    renderComparison();
+
+}
+
+
+/* =========================================================
+   ATUALIZAR INDICADOR DE ZOOM
+========================================================= */
+
+function updateZoomLabel() {
+
+
+    document
+
+        .getElementById(
+
+            "zoom-level"
+
+        )
+
+        .textContent =
+
+        `${Math.round(
+
+            zoomLevel *
+
+            100
+
+        )}%`;
+
+}
+
+
+/* =========================================================
+   RESETAR ZOOM
+========================================================= */
+
+function resetZoom() {
+
+
+    zoomLevel =
+
+        1;
+
+
+    updateZoomLabel();
+
+
+    renderComparison();
+
+}
+
+
+/* =========================================================
+   ZOOM COM CTRL + RODA DO MOUSE
+========================================================= */
+
+document
+
+    .getElementById(
+
+        "visualization"
+
+    )
+
+    .addEventListener(
+
+        "wheel",
+
+        function(event) {
+
+
+            if (
+
+                !event.ctrlKey
+
+            ) {
+
+                return;
+
+            }
+
+
+            event.preventDefault();
+
+
+            if (
+
+                event.deltaY < 0
+
+            ) {
+
+                changeZoom(
+
+                    0.25
+
+                );
+
+            }
+
+            else {
+
+                changeZoom(
+
+                    -0.25
+
+                );
+
+            }
+
+        },
+
+        {
+
+            passive:
+
+                false
+
+        }
+
+    );
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+========================================================= */
+
+updateApplication();
+
+</script>
+
+</body>
+
+</html>
