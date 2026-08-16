@@ -1,0 +1,93 @@
+# Quanto é em Campos?
+
+> Ferramenta online gratuita para comparar áreas e dimensões com campos de futebol por meio de cálculos e visualização proporcional.
+
+## Sobre
+
+O Quanto é em Campos? é uma aplicação web gratuita que permite descobrir a equivalência entre uma área e campos de futebol.
+
+O usuário pode informar uma área ou as dimensões de um espaço para calcular quantos campos de futebol correspondem à medida informada.
+
+A ferramenta também apresenta uma representação visual proporcional da comparação.
+
+## Funcionalidades principais
+
+- Comparação de áreas com campos de futebol.
+- Cálculo da equivalência em campos de futebol.
+- Inserção de áreas em diferentes unidades de medida.
+- Suporte a metros quadrados (m²).
+- Suporte a hectares.
+- Suporte a acres.
+- Cálculo da área a partir das dimensões de comprimento e largura em metros.
+- Representação visual proporcional da área informada em relação a um campo de futebol.
+- Visualização de áreas menores que um campo.
+- Visualização de áreas equivalentes a múltiplos campos.
+- Controle de zoom na área de visualização.
+- Movimentação da área demarcada quando aplicável.
+
+## Referência utilizada
+
+A comparação utiliza como referência um campo de futebol com dimensões de 105 metros de comprimento por 68 metros de largura.
+
+Área de referência:
+
+- 7.140 metros quadrados (m²).
+- 0,714 hectare.
+- Aproximadamente 1,76 acre.
+
+Os resultados representam uma equivalência matemática baseada nessa área de referência.
+
+## Como utilizar
+
+### Informando uma área
+
+O usuário pode informar o valor de uma área e selecionar a unidade correspondente.
+
+A ferramenta converte a medida para metros quadrados e calcula sua equivalência em relação à área de referência de um campo de futebol.
+
+### Informando dimensões
+
+O usuário também pode informar as dimensões de um espaço em metros.
+
+A área é calculada multiplicando:
+
+comprimento × largura
+
+O resultado é então comparado à área de referência de um campo de futebol.
+
+### Limitações Técnicas
+
+A comparação depende da referência de 105 × 68 metros, padrão FIFA para futebol profissional;
+
+Campos de futebol reais podem ter dimensões diferentes;
+
+A ferramenta realiza uma equivalência matemática;
+
+A visualização é proporcional e serve para facilitar a compreensão da escala.
+
+## Páginas
+
+- Página principal: https://jacksoncosta08.github.io/quanto-em-campos/
+- Sobre o projeto: https://jacksoncosta08.github.io/quanto-em-campos/sobre.html
+
+## Informações técnicas
+
+O projeto é uma aplicação web estática desenvolvida com:
+
+- HTML
+- CSS
+- JavaScript
+- SVG
+
+A aplicação é executada diretamente no navegador e não exige instalação.
+
+## Projeto
+
+O Quanto é em Campos? foi criado como uma ferramenta gratuita para facilitar a compreensão de medidas e áreas por meio de uma referência visual familiar: o campo de futebol.
+
+A comparação pode ser útil para compreender, por exemplo, o tamanho de terrenos, áreas urbanas, áreas desmatadas, regiões afetadas por incêndios e outras superfícies expressas em unidades de área.
+
+## Links adicionais
+
+- Repositório no GitHub: https://github.com/Jacksoncosta08/quanto-em-campos
+- Sitemap: https://jacksoncosta08.github.io/quanto-em-campos/sitemap.xml

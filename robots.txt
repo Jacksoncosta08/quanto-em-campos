@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jacksoncosta08.github.io/quanto-em-campos/sitemap.xml
